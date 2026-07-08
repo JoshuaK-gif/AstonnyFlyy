@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  name          String
+  category      String
+  brand         String
+  price         Float
+  discountPrice Float?
+  description   String
+  images        String[]
+  sizes         String[]
+  colors        String[]
+  sku           String   @unique
+  tags          String[]
+  collections   String[]
+  stockStatus   String
+  stockQuantity Int      @default(0)
+  featured      Boolean  @default(false)
+  newArrival    Boolean  @default(false)
+  bestseller    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  reviews       Review[]
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name      String
+  email     String?
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+}
+
+model Collection {
+  id        String   @id @default(cuid())
+  title     String
+  tag       String
+  image     String
+  href      String
+  type      String   @default("category") // e.g., 'category', 'special', 'custom'
+  createdAt DateTime @default(now())
+}
+
+model ImpactStat {
+  id     String @id @default(cuid())
+  value  Int
+  suffix String
+  label  String
+}
+
+model Order {
+  id                    String   @id @default(cuid())
+  orderNumber           String   @unique
+  customerName          String
+  customerEmail         String
+  customerPhone         String?
+  shippingAddress       String
+  totalAmount           Float
+  status                String   @default("Pending")
+  items                 Json
+  pesapalTrackingId     String?
+  pesapalMerchantRef    String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model ProductProperty {
+  id    String @id @default(cuid())
+  type  String // 'category', 'stockStatus', or 'collection'
+  name  String
+  value String
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  status    String   @default("Unread") // "Unread", "Read", "Replied"
+  createdAt DateTime @default(now())
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model LookbookItem {
+  id        String   @id @default(cuid())
+  image     String
+  title     String
+  size      String   @default("base") // "lg", "wide", "tall", "base"
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model CommunityImage {
+  id        String   @id @default(cuid())
+  image     String
+  alt       String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  text      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id                    String   @id @default(cuid())
+  // Hero Section
+  heroBgType            String   @default("image") // "color" or "image"
+  heroBgColor           String   @default("#0f172a")
+  heroBgImage           String   @default("https://media.base44.com/images/public/6a2c25958136d9426eca8288/eeecd1355_generated_8fbbcd65.png")
+  
+  // Collections Section
+  collectionsBgType     String   @default("color")
+  collectionsBgColor    String   @default("#ffffff")
+  collectionsBgImage    String?
+  
+  // Featured Products Section
+  featuredBgType        String   @default("color")
+  featuredBgColor       String   @default("#ffffff")
+  featuredBgImage       String?
+  
+  // Brand Story Section
+  brandStoryBgType      String   @default("color")
+  brandStoryBgColor     String   @default("#ffffff")
+  brandStoryBgImage     String?
+  
+  // Lookbook Section
+  lookbookBgType        String   @default("color")
+  lookbookBgColor       String   @default("#ffffff")
+  lookbookBgImage       String?
+  
+  // Impact Numbers Section
+  impactNumbersBgType   String   @default("color")
+  impactNumbersBgColor  String   @default("#0f172a")
+  impactNumbersBgImage  String?
+  
+  // Community Section
+  communityBgType       String   @default("color")
+  communityBgColor      String   @default("#ffffff")
+  communityBgImage      String?
+  
+  // Newsletter Section
+  newsletterBgType      String   @default("color")
+  newsletterBgColor     String   @default("#f8fafc")
+  newsletterBgImage     String?
+
+  updatedAt             DateTime @updatedAt
+}
