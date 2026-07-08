@@ -5,7 +5,7 @@ import {
   fetchImpactStats, createImpactStat, deleteImpactStat,
   fetchSiteSettings, updateSiteSettings, uploadImage
 } from '@/lib/api';
-import { Plus, Trash2, Loader2, Tags, Boxes, FolderPlus, BarChart3, Edit3, Check, X as CloseIcon, Image as ImageIcon, Paintbrush, Upload, Sparkles } from 'lucide-react';
+import { Plus, Trash2, Loader2, Tags, Boxes, FolderPlus, BarChart3, Edit3, Check, X as CloseIcon, Paintbrush, Upload, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Settings() {

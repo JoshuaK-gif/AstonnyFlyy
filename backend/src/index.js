@@ -32,8 +32,9 @@ function sanitizeError(error) {
 dotenv.config();
 
 const numCPUs = os.cpus().length;
+const isProd = process.env.NODE_ENV === 'production';
 
-if (cluster.isPrimary) {
+if (isProd && cluster.isPrimary) {
   console.log(`⚡️ Primary ${process.pid} is running`);
 
   // Fork workers.
@@ -46,8 +47,19 @@ if (cluster.isPrimary) {
     cluster.fork();
   });
 } else {
+  // Worker-level error handlers for diagnostics
+  process.on('unhandledRejection', (reason) => {
+    console.error('❌ UNHANDLED REJECTION in worker', process.pid, ':', reason);
+  });
+  process.on('uncaughtException', (err) => {
+    console.error('❌ UNCAUGHT EXCEPTION in worker', process.pid, ':', err);
+  });
+
   const { Pool } = pg;
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  const pool = new Pool({ 
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+  });
   const adapter = new PrismaPg(pool);
 
   if (!process.env.DATABASE_URL) {
@@ -1129,7 +1141,7 @@ if (cluster.isPrimary) {
   const frontendDist = path.resolve(__dirname, '..', '..', 'frontend', 'dist');
   app.use(express.static(frontendDist));
 
-  app.get('*', (req, res) => {
+  app.get('/{*path}', (req, res) => {
     if (!req.path.startsWith('/api')) {
       res.sendFile(path.join(frontendDist, 'index.html'));
     }

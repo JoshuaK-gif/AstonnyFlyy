@@ -1,5 +1,4 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import MagneticButton from "../common/MagneticButton";
 import { getOptimizedImage } from "../lib/utils";
 
 export default function HeroSection({ settings }) {

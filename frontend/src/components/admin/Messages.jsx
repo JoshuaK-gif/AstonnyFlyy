@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchMessages, updateMessageStatus, deleteMessage } from '@/lib/api';
-import { Mail, Search, Filter, Trash2, CheckCircle, Clock, Loader2, X, User, Calendar } from 'lucide-react';
+import { Mail, Search, Filter, Trash2, Loader2, X, User, Calendar } from 'lucide-react';
 import { format } from 'date-fns';
 import { toast } from 'sonner';
 

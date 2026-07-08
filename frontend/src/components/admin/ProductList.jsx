@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, ExternalLink, Search, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { productCategories } from '@/data/products';
 import { fetchProducts, deleteProduct, fetchProperties } from '@/lib/api';
 import { toast } from 'sonner';
 

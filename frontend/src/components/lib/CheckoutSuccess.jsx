@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import Header from '../layout/Header';

@@ -41,7 +41,7 @@ export default function BrandStorySection({ settings }) {
       <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
       <div className="relative z-10 mx-auto grid max-w-[1800px] gap-16 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <h2 className="bs-heading font-display text-[clamp(2rem,5vw,6rem)] font-black uppercase leading-[0.82] tracking-[-0.07em] text-center md:text-left">
-          This is How<br class="hidden md:block" />we Flyy
+          This is How<br className="hidden md:block" />we Flyy
           
         </h2>
         <div className="space-y-8 text-lg leading-relaxed md:text-xl text-white/72">

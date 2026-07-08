@@ -6,7 +6,7 @@ import {
   fetchTestimonials, createTestimonial, deleteTestimonial,
   uploadImage
 } from '@/lib/api';
-import { Plus, Trash2, Loader2, Image as ImageIcon, LayoutGrid, MessageSquare, Upload, Type, Check, X } from 'lucide-react';
+import { Trash2, Loader2, Image as ImageIcon, LayoutGrid, MessageSquare, Upload, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Editorial() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, Edit2, Loader2, Save, X, Upload, Grid } from 'lucide-react';
+import { Plus, Trash2, Edit2, Loader2, X, Upload, Grid } from 'lucide-react';
 import { fetchCollections, createCollection, updateCollection, deleteCollection, uploadImage } from '@/lib/api';
 import { toast } from 'sonner';
 

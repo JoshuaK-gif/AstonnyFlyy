@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Clock, CheckCircle, XCircle, Search, Download, ExternalLink, Loader2, Package } from 'lucide-react';
+import { Clock, CheckCircle, XCircle, Search, Download, ExternalLink, Loader2, Package } from 'lucide-react';
 import { toast } from 'sonner';
 import { AnimatePresence, motion } from 'framer-motion';
 import { fetchOrders, updateOrderStatus } from '@/lib/api';

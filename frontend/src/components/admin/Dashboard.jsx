@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Package, ShoppingBag, Users, DollarSign, TrendingUp, ArrowRight, ArrowUpRight, Loader2, Mail } from 'lucide-react';
+import { Package, ShoppingBag, DollarSign, ArrowRight, ArrowUpRight, Loader2, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fetchDashboardStats } from '@/lib/api';

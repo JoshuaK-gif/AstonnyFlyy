@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/lib/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { ShieldCheck, Loader2, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import logo from "@/assets/logo.png";

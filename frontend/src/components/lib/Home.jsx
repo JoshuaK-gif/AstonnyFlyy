@@ -5,6 +5,7 @@ import LoadingScreen from "@/components/common/LoadingScreen";
 import ScrollProgress from "@/components/common/ScrollProgress";
 import HeroSection from "@/components/home/HeroSection";
 import CollectionsSection from "@/components/home/CollectionsSection";
+import FeaturedProductsSection from "@/components/home/FeaturedProductsSection";
 import BrandStorySection from "@/components/home/BrandStorySection";
 import LookbookSection from "@/components/home/LookbookSection";
 import ImpactNumbersSection from "@/components/home/ImpactNumbersSection";
@@ -29,6 +30,7 @@ export default function Home() {
       <main>
         <HeroSection settings={settings} />
         <CollectionsSection settings={settings} />
+        <FeaturedProductsSection />
         <BrandStorySection settings={settings} />
         <LookbookSection settings={settings} />
         <ImpactNumbersSection settings={settings} />
