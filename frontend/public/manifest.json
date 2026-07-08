@@ -1,0 +1,16 @@
+{
+  "name": "AstonnyFlyy",
+  "short_name": "AstonnyFlyy",
+  "description": "Modern Street Luxury — Premium fashion e-commerce",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
