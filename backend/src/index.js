@@ -150,7 +150,7 @@ if (isProd && cluster.isPrimary) {
   }
 
   // Health Check
-  app.get('/', (req, res) => res.json({ status: 'AstonnyFlyy API is active' }));
+  app.get('/api/health', (req, res) => res.json({ status: 'AstonnyFlyy API is active' }));
 
   // --- AUTH ROUTES ---
 
