@@ -164,6 +164,56 @@ if (isProd && cluster.isPrimary) {
   // Health Check
   app.get('/api/health', (req, res) => res.json({ status: 'AstonnyFlyy API is active' }));
 
+  // SEO: robots.txt
+  app.get('/robots.txt', (req, res) => {
+    res.type('text/plain').send(`User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://astonnyflyy.onrender.com/sitemap.xml
+`);
+  });
+
+  // SEO: sitemap.xml
+  app.get('/sitemap.xml', async (req, res) => {
+    const FRONTEND_URL = process.env.FRONTEND_URL || 'https://astonnyflyy.onrender.com';
+    try {
+      const products = await prisma.product.findMany({ select: { id: true, updatedAt: true } });
+      const collections = await prisma.collection.findMany({ select: { id: true, createdAt: true } });
+      
+      let urls = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>${FRONTEND_URL}/</loc><priority>1.0</priority></url>
+  <url><loc>${FRONTEND_URL}/shop</loc><priority>0.9</priority></url>
+  <url><loc>${FRONTEND_URL}/about</loc><priority>0.7</priority></url>
+  <url><loc>${FRONTEND_URL}/contact</loc><priority>0.7</priority></url>
+  <url><loc>${FRONTEND_URL}/lookbook</loc><priority>0.8</priority></url>
+  <url><loc>${FRONTEND_URL}/faq</loc><priority>0.6</priority></url>
+  <url><loc>${FRONTEND_URL}/privacy</loc><priority>0.4</priority></url>
+  <url><loc>${FRONTEND_URL}/terms</loc><priority>0.4</priority></url>`;
+
+      for (const p of products) {
+        urls += `\n  <url><loc>${FRONTEND_URL}/product/${p.id}</loc><lastmod>${p.updatedAt.toISOString()}</lastmod><priority>0.8</priority></url>`;
+      }
+
+      urls += '\n</urlset>';
+      res.header('Content-Type', 'application/xml');
+      res.send(urls);
+    } catch (error) {
+      // Fallback if DB is not available
+      res.header('Content-Type', 'application/xml');
+      res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>${FRONTEND_URL}/</loc><priority>1.0</priority></url>
+  <url><loc>${FRONTEND_URL}/shop</loc><priority>0.9</priority></url>
+  <url><loc>${FRONTEND_URL}/about</loc><priority>0.7</priority></url>
+  <url><loc>${FRONTEND_URL}/contact</loc><priority>0.7</priority></url>
+  <url><loc>${FRONTEND_URL}/lookbook</loc><priority>0.8</priority></url>
+</urlset>`);
+    }
+  });
+
   // --- AUTH ROUTES ---
 
   app.post('/api/auth/login', loginLimiter, async (req, res) => {

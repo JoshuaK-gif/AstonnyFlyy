@@ -2,8 +2,8 @@ import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "AstonnyFlyy";
 const DEFAULT_DESCRIPTION = "Premium fashion e-commerce for modern luxury, urban style, and trendsetting collections.";
-const DEFAULT_IMAGE = "https://astonnyflyy.com/logo.jpeg";
-const SITE_URL = "https://astonnyflyy.com";
+const DEFAULT_IMAGE = "https://astonnyflyy.onrender.com/logo.jpeg";
+const SITE_URL = "https://astonnyflyy.onrender.com";
 
 export default function SEO({
   title,
@@ -17,6 +17,22 @@ export default function SEO({
   const pageDescription = description || DEFAULT_DESCRIPTION;
   const pageImage = image || DEFAULT_IMAGE;
   const pageUrl = url || SITE_URL;
+
+  // Organization schema for rich search results
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "AstonnyFlyy",
+    "url": SITE_URL,
+    "logo": DEFAULT_IMAGE,
+    "description": DEFAULT_DESCRIPTION,
+    "email": "livingstonetwinamatsiko2@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kampala",
+      "addressCountry": "UG"
+    }
+  };
 
   return (
     <Helmet>
@@ -35,6 +51,9 @@ export default function SEO({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       <meta name="twitter:image" content={pageImage} />
+
+      {/* Organization Schema */}
+      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
 
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
