@@ -83,7 +83,19 @@ if (isProd && cluster.isPrimary) {
 
   // Security Middleware
   const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-  app.use(helmet());
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        imgSrc: ["'self'", "data:", "https://media.base44.com", "https://res.cloudinary.com", "https://static.wixstatic.com", "https://*.cloudinary.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com", "https://fonts.googleapis.com"],
+        connectSrc: ["'self'", FRONTEND_URL],
+        manifestSrc: ["'self'"],
+      },
+    },
+  }));
   app.use(cors({
     origin: (origin, callback) => {
       const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'];
