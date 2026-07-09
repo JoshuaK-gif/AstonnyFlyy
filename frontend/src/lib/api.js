@@ -380,7 +380,14 @@ export async function submitReview(reviewData) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(reviewData),
   });
-  if (!response.ok) throw new Error('Failed to submit review');
+  if (!response.ok) {
+    let detail = 'Failed to submit review';
+    try {
+      const err = await response.json();
+      detail = Array.isArray(err.error) ? err.error.map(e => e.message).join(', ') : err.error || detail;
+    } catch {}
+    throw new Error(detail);
+  }
   return response.json();
 }
 
