@@ -47,7 +47,7 @@ export default function Orders() {
       if (selectedOrder && selectedOrder.id === id) {
         setSelectedOrder(prev => ({ ...prev, status }));
       }
-    } catch (error) {
+    } catch {
       toast.error("Status update failed");
     } finally {
       setUpdating(false);

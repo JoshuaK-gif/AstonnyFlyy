@@ -40,7 +40,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1800px]">
         <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1fr_1.2fr]">
           <div className="footer-item">
-            <h2 className="font-display text-5xl font-black leading-none tracking-[-0.06em] md:text-7xl">AstonnyFlyy</h2>
+            <h2 className="font-display text-5xl font-black leading-none tracking-[-0.06em] md:text-7xl" style={{ fontFamily: "'Kaushan Script', cursive" }}>AstonnyFlyy</h2>
             <p className="mt-5 text-sm font-bold  tracking-[0.28em] text-accent">FlyyWithMe</p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2">

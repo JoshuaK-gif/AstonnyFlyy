@@ -19,7 +19,7 @@ export default function Collections() {
     try {
       const data = await fetchCollections();
       setCollections(data);
-    } catch (error) {
+    } catch {
       toast.error("Failed to load collections");
     } finally {
       setLoading(false);
@@ -34,7 +34,7 @@ export default function Collections() {
       const data = await uploadImage(file);
       setFormData(prev => ({ ...prev, image: data.url }));
       toast.success("Image uploaded");
-    } catch (error) {
+    } catch {
       toast.error("Failed to upload image");
     } finally {
       setUploading(false);
@@ -64,9 +64,9 @@ export default function Collections() {
       }
       setFormData({ title: '', tag: '', image: '', href: '', type: 'category' });
       loadCollections();
-    } catch (error) {
+    } catch (err) {
       toast.error("Failed to save collection");
-      console.error(error);
+      console.error(err);
     }
   };
 
@@ -81,7 +81,7 @@ export default function Collections() {
       await deleteCollection(id);
       toast.success("Collection deleted");
       loadCollections();
-    } catch (error) {
+    } catch {
       toast.error("Failed to delete collection");
     }
   };

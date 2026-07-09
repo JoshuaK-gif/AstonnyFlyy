@@ -1,0 +1,10 @@
+{
+  "name": "astonny-flyy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install && npx prisma generate",
+    "start": "cd backend && node src/index.js",
+    "dev": "cd backend && node --watch src/index.js"
+  }
+}

@@ -85,7 +85,7 @@ export default function Editorial() {
       if (type === 'lookbook') setNewLook(prev => ({ ...prev, image: url }));
       if (type === 'community') setNewCommImage(prev => ({ ...prev, image: url }));
       toast.success('Image uploaded');
-    } catch (error) {
+    } catch {
       toast.error('Upload failed');
     } finally {
       setUploading(false);

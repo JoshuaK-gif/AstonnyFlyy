@@ -227,7 +227,7 @@ export default function ProductDetail() {
               <div className="rounded-xl border border-border p-4">
                 <div className="flex flex-col gap-6">
                   {reviews.length > 0 ? (
-                    reviews.map((review, i) => (
+                    reviews.map((review) => (
                       <div key={review.id} className="border-b border-border pb-6 last:border-0">
                         <div className="flex items-center gap-2 mb-2">
                           <div className="flex">

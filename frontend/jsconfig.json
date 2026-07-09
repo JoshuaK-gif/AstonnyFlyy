@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     },
     "jsx": "react-jsx",
     "module": "esnext",
@@ -17,11 +17,8 @@
     "types": []
   },
   "include": [
-    "components/**/*.js",
-    "components/**/*.jsx",
-    "lib/**/*.js",
-    "lib/**/*.jsx",
-    "data/**/*.js"
+    "src/**/*.js",
+    "src/**/*.jsx"
   ],
   "exclude": ["node_modules", "dist", "server"]
 }

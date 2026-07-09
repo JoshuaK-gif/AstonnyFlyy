@@ -46,6 +46,7 @@ export default function Header() {
                   exit={{ opacity: 0, x: -10, width: 0 }}
                   transition={{ duration: 0.4, ease: "circOut" }}
                   className="overflow-hidden whitespace-nowrap font-display text-lg uppercase tracking-tighter md:text-xl pr-1 pb-1"
+                  style={{ fontFamily: "'Kaushan Script', cursive" }}
                 >
                   AstonnyFlyy
                 </motion.span>
@@ -56,8 +57,8 @@ export default function Header() {
         <nav className="hidden items-center gap-10 md:flex">
           {links.map((link) =>
             link.to
-              ? <Link key={link.label} to={link.to} className="text-sm uppercase tracking-[0.18em] transition hover:text-accent" style={{ fontFamily: "'Kaushan Script', cursive" }}>{link.label}</Link>
-              : <a key={link.label} href={link.href} className="text-sm uppercase tracking-[0.18em] transition hover:text-accent" style={{ fontFamily: "'Kaushan Script', cursive" }}>{link.label}</a>
+              ? <Link key={link.label} to={link.to} className="text-sm uppercase tracking-[0.18em] transition hover:text-accent">{link.label}</Link>
+              : <a key={link.label} href={link.href} className="text-sm uppercase tracking-[0.18em] transition hover:text-accent">{link.label}</a>
           )}
         </nav>
         <div className="flex items-center gap-3">

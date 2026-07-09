@@ -422,7 +422,7 @@ function SectionBackgroundsEditor({ settings, onSave, isSaving }) {
   useEffect(() => {
     if (settings) {
       // Remove Prisma generated metadata to avoid schema validation errors on update
-      const { id, updatedAt, ...rest } = settings;
+      const { id: _id, updatedAt: _updatedAt, ...rest } = settings;
       setForm(rest);
     }
   }, [settings]);
@@ -439,7 +439,7 @@ function SectionBackgroundsEditor({ settings, onSave, isSaving }) {
         [`${section}BgType`]: 'image'
       }));
       toast.success(`${section} background image uploaded!`);
-    } catch (e) {
+    } catch {
       toast.error('Upload failed');
     } finally {
       setUploadingSection(null);

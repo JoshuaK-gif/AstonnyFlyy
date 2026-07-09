@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "AstonnyFlyy";
-const DEFAULT_DESCRIPTION = "Premium fashion e-commerce for modern luxury, urban style, and trendsetting collections.";
-const DEFAULT_IMAGE = "https://astonnyflyy.onrender.com/logo.jpeg";
 const SITE_URL = "https://astonnyflyy.onrender.com";
+const DEFAULT_DESCRIPTION = "Premium fashion e-commerce for modern luxury, urban style, and trendsetting collections.";
+const ORIGIN = typeof window !== 'undefined' ? window.location.origin : SITE_URL;
+const DEFAULT_IMAGE = `${ORIGIN}/logo.jpeg`;
 
 export default function SEO({
   title,
@@ -24,7 +25,7 @@ export default function SEO({
     "@type": "ClothingStore",
     "name": "AstonnyFlyy",
     "url": SITE_URL,
-    "logo": DEFAULT_IMAGE,
+    "logo": `${SITE_URL}/logo.jpeg`,
     "description": DEFAULT_DESCRIPTION,
     "email": "livingstonetwinamatsiko2@gmail.com",
     "address": {

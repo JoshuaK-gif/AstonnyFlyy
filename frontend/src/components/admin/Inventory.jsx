@@ -19,7 +19,7 @@ export default function Inventory() {
       setLoading(true);
       const data = await fetchProducts();
       setProducts(data);
-    } catch (error) {
+    } catch {
       toast.error("Failed to load inventory");
     } finally {
       setLoading(false);
@@ -49,7 +49,7 @@ export default function Inventory() {
       toast.success(`${ids.length} products updated`);
       setModifiedProducts({});
       loadProducts();
-    } catch (error) {
+    } catch {
       toast.error("Bulk update failed");
     } finally {
       setSaving(false);

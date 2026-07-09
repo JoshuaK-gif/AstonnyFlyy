@@ -225,9 +225,11 @@ export default function ProductForm() {
       };
 
       // 3. Save or Update
-      const response = isEditMode 
-        ? await updateProduct(id, finalData)
-        : await createProduct(finalData);
+      if (isEditMode) {
+        await updateProduct(id, finalData);
+      } else {
+        await createProduct(finalData);
+      }
       
       toast.success(isEditMode ? 'Product Updated' : 'Product Published');
       navigate('/admin/products');

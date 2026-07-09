@@ -4,7 +4,6 @@ import { getOptimizedImage } from "../lib/utils";
 export default function HeroSection({ settings }) {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 700], [0, -170]);
-  const scale = useTransform(scrollY, [0, 700], [1.08, 1]);
 
   const bgType = settings?.heroBgType || 'image';
   const bgColor = settings?.heroBgColor || '#0f172a';
@@ -49,6 +48,7 @@ export default function HeroSection({ settings }) {
           animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }} 
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }} 
           className="max-w-full font-display text-[clamp(3rem,14vw,15rem)] leading-[1] tracking-[-0.08em] sm:text-[clamp(2rem,10vw,12rem)] pb-6"
+          style={{ fontFamily: "'Kaushan Script', cursive" }}
         >
           AstonnyFlyy
         </motion.h1>

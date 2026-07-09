@@ -51,7 +51,7 @@ export default function ProductList() {
             toast.success("Product Deleted", {
               description: `"${name}" has been removed from your store.`
             });
-          } catch (error) {
+          } catch {
             toast.error("Failed to delete product");
           }
         },

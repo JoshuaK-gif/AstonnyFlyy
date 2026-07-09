@@ -2,12 +2,10 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Heart, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
-import { useCart } from "../cart/CartProvider";
 import { useWishlist } from "../hooks/useWishlist";
 import { getOptimizedImage } from "../lib/utils";
 
 export default function ProductCard({ product, index = 0, isFlipped = false, onHover = () => {}, onLeave = () => {} }) {
-  const { addItem } = useCart();
   const { isWishlisted, toggleWishlist } = useWishlist();
   const wishlisted = isWishlisted(product.id);
   const [imgIndex, setImgIndex] = useState(0);
