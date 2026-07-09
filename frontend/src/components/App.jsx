@@ -85,7 +85,6 @@ function App() {
               <AuthenticatedApp />
             </SmoothScroll>
           </Router>
-          <Toaster />
         </CartProvider>
       </QueryClientProvider>
     </AuthProvider>
