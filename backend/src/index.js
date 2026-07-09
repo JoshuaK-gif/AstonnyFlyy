@@ -98,7 +98,11 @@ if (isProd && cluster.isPrimary) {
   }));
   app.use(cors({
     origin: (origin, callback) => {
-      const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'];
+      const allowedOrigins = [
+        FRONTEND_URL,
+        'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175',
+        'https://astonnyflyy.onrender.com', 'https://astonny-flyy.onrender.com'
+      ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {

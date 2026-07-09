@@ -30,8 +30,8 @@ services:
       - key: EMAIL_PASS
         sync: false
       - key: FRONTEND_URL
-        value: https://astonny-flyy.onrender.com
+        value: https://astonnyflyy.onrender.com
       - key: BASE_URL
-        value: https://astonny-flyy.onrender.com
+        value: https://astonnyflyy.onrender.com
       - key: VITE_API_URL
-        value: https://astonny-flyy.onrender.com/api
+        value: https://astonnyflyy.onrender.com/api
